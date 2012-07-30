@@ -1,0 +1,10 @@
+set @u='ttee';
+set @h='localhost';
+set @d='dev';
+
+set @u_d=concat(@u,"_",@d);
+create database @u_d;
+set @ud=concat(@u,@d);
+set @udh=concat(@ud,"@",@h);
+create user @udh identified with @ud;
+grant alter, create, delete, drop, index, insert, lock tables, select, update on @u_d.* to @udh;
